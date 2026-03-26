@@ -1,0 +1,7 @@
+[project]
+name = "ml-mentoring-model-calibration-problem"
+version = "0.1.0"
+description = "Machine Learning and Data Science Project for Mentoring Students on the need to Calibrate Learning Models."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
