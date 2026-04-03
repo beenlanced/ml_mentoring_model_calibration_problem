@@ -159,7 +159,7 @@ Specifically, I would like to acknowledge:
 
 - The folks who host the []().
 
-- Guidance from []().
+- Guidance from [](https://github.com/ritvikmath/YouTubeVideoCode/blob/main/Probability%20Calibration.ipynb).
 
 - [Hema Kalyan Murapaka](https://www.linkedin.com/in/hemakalyan) and [Benito Martin](https://martindatasol.com/blog) for sharing their README.md templates upon which I have derived my README.md.
 
