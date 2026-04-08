@@ -45,10 +45,7 @@ The project:
 
 The project contains the key elements:
 
-- `Area Under the Receiver-Operating Characteris (ROC) Curve [(AUC)]` scoring for classifer identification,
-- `Deep Learning` for neural networks building,
 - `Git` (version control),
-- `imblearn` Python library to perform oversampling and undersampling for balancing data sets,
 - `Jupyter` Python coded notebooks,
 - `Matplotlib` visualization of data,
 - `Numpy` for arrays and numerical operations,
@@ -56,8 +53,6 @@ The project contains the key elements:
 - `Python` the standard modules,
 - `Seaborn` visualization of data,
 - `Scikit-Learn` to get training and test datasets,
-- `SMOTE` to help with oversampling and balancing data sets,
-- `TensorFlow` to build nodes and layers,
 - `uv` package management including use of `ruff` for linting and formatting
 
 ## Tech Stack
@@ -71,7 +66,6 @@ The project contains the key elements:
 ![Plotly](https://img.shields.io/badge/Plotly-239120?style=for-the-badge&logo=plotly&logoColor=white)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Scikit-Learn](https://img.shields.io/badge/scikit_learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
 ---
