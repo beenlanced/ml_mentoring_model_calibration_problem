@@ -1,10 +1,10 @@
 # Understanding the Importance of Calibrating Machine Learning Models
 
 <p>
-  <img alt="ML Model Reliability/Calibration figure" src="imgs/"/>
+  <img alt="ML Model Reliability/Calibration figure" src="imgs/calibration.fig"/>
 </p>
 
-[img source: ](url)
+[img source:](https://medium.com/@sahilbansal480/understanding-model-calibration-in-machine-learning-6701814dbb3a)
 
 ## Project Description
 
@@ -29,19 +29,21 @@ Without calibration, a doctor might misinterpret a "risk score" as a simple bina
 
 The project:
 
-- Loads and inspects the banking data
+- Loads and inspects the UCI Heart Disease data
 - Preprocesses/cleans the data
 - Performs exploratory data analysis (EDA)
   - Statistical summary of the data
-  - Normalize the data
+  - Checking for outliers in continuous features and mitigating (i.e., removing extremes that don't make sense)
+  - Check for imbalance data in the categorical features especially the target feature/variable.
+  - Fix imbalances
+  - Scaling the data
   - Feature engineering
-    - Categorical encoding
-  - Univariate analysis
-  - Bivariate analysis
-- Tests for balanced and imbalanced data sets
+    - Categorical encodings
+- Split data into test, train, and validation datasets making sure to avoid data leakage
+- Create three different classifiers: Naive Bayes, Random Forest, and Support Vector Machine classifiers.
+- Calculate before and after Brier scores to show calibration improvement
 - Calibrates different types of Machine Learning models to show the importance of Calibration
-
-### Summary, Actionable Insights, and Business Recommendations
+- Show how to use calibrated model
 
 ---
 
@@ -82,15 +84,7 @@ Here are some instructions to help you set up this project locally.
 
 ## Installation Steps
 
-The Python version used for this project is `Python 3.12 or higher` to be compatible with TensorFlow.
-
-Follow the requirements for using TensorFlow [here](https://www.tensorflow.org/install/pip#macos)
-
-use `uv pip install tensorflow`
-
-- Make sure to use python versions `Python 3.9–3.12
-- pip version 19.0 or higher for Linux (requires manylinux2014 support) and Windows. pip version 20.3 or higher for macOS.
-- Windows Native Requires Microsoft Visual C++ Redistributable for Visual Studio 2015, 2017 and 2019
+The Python version used for this project is `Python 3.12 or higher`.
 
 ### Clone the Repo
 
@@ -100,7 +94,7 @@ use `uv pip install tensorflow`
    git clone https://github.com/beenlanced/ml_mentoring_model_calibration_problem.git
    ```
 
-2. Create a virtual environment named `.venv` using `uv` Python version 3.11:
+2. Create a virtual environment named `.venv` using `uv` Python version 3.12:
 
    ```bash
    uv venv --python=3.12
@@ -127,15 +121,13 @@ use `uv pip install tensorflow`
    uv pip install -r pyproject.toml
    ```
 
-### View Notebooks to see Exploratory Data Analysis and Predicative Model Construction
+### View Notebooks to see Data Gathering, Exploratory Data Analysis, Predicative Model Construction, and Calibration
 
 ---
 
 ## Dataset
 
-We use open-source datasets from Kaggle: []().
-
-The dataset contains 10,000 sample points with 14 distinct features such as
+We use open-source datasets from Kaggle: [heart.csv](https://www.kaggle.com/datasets/arezaei81/heartcsv).
 
 ---
 
@@ -155,12 +147,9 @@ I would like to extend my gratitude to all the individuals and organizations who
 
 Specifically, I would like to acknowledge:
 
-- The folks who host the []().
-- The UCI ECG heartbeat heart disease categorization/classification dataset found [on Kaggle](https://www.kaggle.com/datasets/zhaoyingzhu/heartcsv/data).
+- Guidance from [Probability Calibration: Data Science Concepts](https://www.youtube.com/watch?v=AunotauS5yI).
 
-- Guidance from [](https://github.com/ritvikmath/YouTubeVideoCode/blob/main/Probability%20Calibration.ipynb).
-
-- [](https://www.kaggle.com/code/abolfazluk/ai-powered-heart-health-prediction-uci-dataset/notebook)
+- Data from [heart.csv](https://www.kaggle.com/datasets/arezaei81/heartcsv).
 
 - [Hema Kalyan Murapaka](https://www.linkedin.com/in/hemakalyan) and [Benito Martin](https://martindatasol.com/blog) for sharing their README.md templates upon which I have derived my README.md.
 
