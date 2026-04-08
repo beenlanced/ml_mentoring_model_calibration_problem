@@ -1,25 +1,29 @@
 # Understanding the Importance of Calibrating Machine Learning Models
 
 <p>
-  <img alt="ML Model Calibration figure" src="imgs/"/>
+  <img alt="ML Model Reliability/Calibration figure" src="imgs/"/>
 </p>
 
 [img source: ](url)
 
 ## Project Description
 
-This project came out of the []().
+This project emphasizes the need for data and machine learning scientists to calibrate their machine learning classification models<sup>\*</sup>. Here, model calibration relates to the process of adjusting a classifier so that its predicted probability (e.g., 80%) actually reflects the true frequency of the event occurring in the real world (e.g., 8 out of 10 people). It ensures that a model's "confidence" matches its actual accuracy, transforming raw scores into reliable risk estimates. This project show you how to test for calibration, how to calibrate a learning model, and most importantly how to use a calibrated model afterwards.
 
-This project aims to develop a predictive model to
+The project relies on the heart disease dataset, a reliable and extensivley used resource in cardiovascular research medical studies, and machine learning applications. While the original dataset has 76 attributes or features, the dataset used here only uses 14 crucial features linked to heart disease diagnosis. The **target** or prediction is a binary classification indicating whether a patient has heart disease (target = 1) or not (target = 0).
+
+<sup>\*</sup> Calibration applies to regression models as well, but the concept of predicting probabilities as in classification shifts to predcting uncertainty and intervals. In these situations, a calbibrated model is one where the predicted uncertainty (like a variance or confidence interval) accurately reflects the actual distribution of the data.
+This project reveals calibration for classification models solely.
 
 ### The Problem
 
-**As the bank's data scientist build a neural network based classifier that can determine whether a customer will leave the bank within the next 6 months.**
+** Raw accuracy (i.e., taking the probabilities from an uncalibrated classification model) is not enough.**
 
-### Some Questions to Keep in Mind
+Especially considering the high-stakes decisions of making a diagnosis of heart disease or not. While a standard machine learning model might correctly identify a patient at risk, its predicted probability (e.g., 0.8) often doesn't reflect the real-world likelihood of the disease.
 
-- TBD
--
+In this project using the UCI Heart Disease dataset, I found that models like Radom Forests, Naive Bayes, or SVMs can be "overconfident" or "underconfident." Calibration ensures that if the model predicts a 80% chance of heart disease, roughly 80% of those patients actually have the condition.
+
+Without calibration, a doctor might misinterpret a "risk score" as a simple binary flag, leading to unnecessary invasive procedures or, worse, missed diagnoses. The whole point is to align predicted probabilities with clinical reality --think, transforming a black-box algorithm into a reliable diagnostic tool that supports precise, risk-adjusted medical interventions.
 
 ### What this Project Does Specifically
 
@@ -152,8 +156,11 @@ I would like to extend my gratitude to all the individuals and organizations who
 Specifically, I would like to acknowledge:
 
 - The folks who host the []().
+- The UCI ECG heartbeat heart disease categorization/classification dataset found [on Kaggle](https://www.kaggle.com/datasets/zhaoyingzhu/heartcsv/data).
 
 - Guidance from [](https://github.com/ritvikmath/YouTubeVideoCode/blob/main/Probability%20Calibration.ipynb).
+
+- [](https://www.kaggle.com/code/abolfazluk/ai-powered-heart-health-prediction-uci-dataset/notebook)
 
 - [Hema Kalyan Murapaka](https://www.linkedin.com/in/hemakalyan) and [Benito Martin](https://martindatasol.com/blog) for sharing their README.md templates upon which I have derived my README.md.
 
