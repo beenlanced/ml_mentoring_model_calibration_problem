@@ -1,43 +1,49 @@
 # Understanding the Importance of Calibrating Machine Learning Models
 
 <p>
-  <img alt="ML Model Calibration figure" src="imgs/"/>
+  <img alt="ML Model Reliability/Calibration figure" src="imgs/calibration.fig"/>
 </p>
 
-[img source: ](url)
+[img source:](https://medium.com/@sahilbansal480/understanding-model-calibration-in-machine-learning-6701814dbb3a)
 
 ## Project Description
 
-This project came out of the []().
+This project emphasizes the need for data and machine learning scientists to calibrate their machine learning classification models<sup>\*</sup>. Here, model calibration relates to the process of adjusting a classifier so that its predicted probability (e.g., 80%) actually reflects the true frequency of the event occurring in the real world (e.g., 8 out of 10 people). It ensures that a model's "confidence" matches its actual accuracy, transforming raw scores into reliable risk estimates. This project show you how to test for calibration, how to calibrate a learning model, and most importantly how to use a calibrated model afterwards.
 
-This project aims to develop a predictive model to
+The project relies on the heart disease dataset, a reliable and extensivley used resource in cardiovascular research medical studies, and machine learning applications. While the original dataset has 76 attributes or features, the dataset used here only uses 14 crucial features linked to heart disease diagnosis. The **target** or prediction is a binary classification indicating whether a patient has heart disease (target = 1) or not (target = 0).
+
+<sup>\*</sup> Calibration applies to regression models as well, but the concept of predicting probabilities as in classification shifts to predcting uncertainty and intervals. In these situations, a calbibrated model is one where the predicted uncertainty (like a variance or confidence interval) accurately reflects the actual distribution of the data.
+This project reveals calibration for classification models solely.
 
 ### The Problem
 
-**As the bank's data scientist build a neural network based classifier that can determine whether a customer will leave the bank within the next 6 months.**
+** Raw accuracy (i.e., taking the probabilities from an uncalibrated classification model) is not enough.**
 
-### Some Questions to Keep in Mind
+Especially considering the high-stakes decisions of making a diagnosis of heart disease or not. While a standard machine learning model might correctly identify a patient at risk, its predicted probability (e.g., 0.8) often doesn't reflect the real-world likelihood of the disease.
 
-- TBD
--
+In this project using the UCI Heart Disease dataset, I found that models like Radom Forests, Naive Bayes, or SVMs can be "overconfident" or "underconfident." Calibration ensures that if the model predicts a 80% chance of heart disease, roughly 80% of those patients actually have the condition.
+
+Without calibration, a doctor might misinterpret a "risk score" as a simple binary flag, leading to unnecessary invasive procedures or, worse, missed diagnoses. The whole point is to align predicted probabilities with clinical reality --think, transforming a black-box algorithm into a reliable diagnostic tool that supports precise, risk-adjusted medical interventions.
 
 ### What this Project Does Specifically
 
 The project:
 
-- Loads and inspects the banking data
+- Loads and inspects the UCI Heart Disease data
 - Preprocesses/cleans the data
 - Performs exploratory data analysis (EDA)
   - Statistical summary of the data
-  - Normalize the data
+  - Checking for outliers in continuous features and mitigating (i.e., removing extremes that don't make sense)
+  - Check for imbalance data in the categorical features especially the target feature/variable.
+  - Fix imbalances
+  - Scaling the data
   - Feature engineering
-    - Categorical encoding
-  - Univariate analysis
-  - Bivariate analysis
-- Tests for balanced and imbalanced data sets
+    - Categorical encodings
+- Split data into test, train, and validation datasets making sure to avoid data leakage
+- Create three different classifiers: Naive Bayes, Random Forest, and Support Vector Machine classifiers.
+- Calculate before and after Brier scores to show calibration improvement
 - Calibrates different types of Machine Learning models to show the importance of Calibration
-
-### Summary, Actionable Insights, and Business Recommendations
+- Show how to use calibrated model
 
 ---
 
@@ -45,10 +51,7 @@ The project:
 
 The project contains the key elements:
 
-- `Area Under the Receiver-Operating Characteris (ROC) Curve [(AUC)]` scoring for classifer identification,
-- `Deep Learning` for neural networks building,
 - `Git` (version control),
-- `imblearn` Python library to perform oversampling and undersampling for balancing data sets,
 - `Jupyter` Python coded notebooks,
 - `Matplotlib` visualization of data,
 - `Numpy` for arrays and numerical operations,
@@ -56,8 +59,6 @@ The project contains the key elements:
 - `Python` the standard modules,
 - `Seaborn` visualization of data,
 - `Scikit-Learn` to get training and test datasets,
-- `SMOTE` to help with oversampling and balancing data sets,
-- `TensorFlow` to build nodes and layers,
 - `uv` package management including use of `ruff` for linting and formatting
 
 ## Tech Stack
@@ -71,7 +72,6 @@ The project contains the key elements:
 ![Plotly](https://img.shields.io/badge/Plotly-239120?style=for-the-badge&logo=plotly&logoColor=white)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Scikit-Learn](https://img.shields.io/badge/scikit_learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
 ---
@@ -84,15 +84,7 @@ Here are some instructions to help you set up this project locally.
 
 ## Installation Steps
 
-The Python version used for this project is `Python 3.12 or higher` to be compatible with TensorFlow.
-
-Follow the requirements for using TensorFlow [here](https://www.tensorflow.org/install/pip#macos)
-
-use `uv pip install tensorflow`
-
-- Make sure to use python versions `Python 3.9–3.12
-- pip version 19.0 or higher for Linux (requires manylinux2014 support) and Windows. pip version 20.3 or higher for macOS.
-- Windows Native Requires Microsoft Visual C++ Redistributable for Visual Studio 2015, 2017 and 2019
+The Python version used for this project is `Python 3.12 or higher`.
 
 ### Clone the Repo
 
@@ -102,7 +94,7 @@ use `uv pip install tensorflow`
    git clone https://github.com/beenlanced/ml_mentoring_model_calibration_problem.git
    ```
 
-2. Create a virtual environment named `.venv` using `uv` Python version 3.11:
+2. Create a virtual environment named `.venv` using `uv` Python version 3.12:
 
    ```bash
    uv venv --python=3.12
@@ -129,15 +121,13 @@ use `uv pip install tensorflow`
    uv pip install -r pyproject.toml
    ```
 
-### View Notebooks to see Exploratory Data Analysis and Predicative Model Construction
+### View Notebooks to see Data Gathering, Exploratory Data Analysis, Predicative Model Construction, and Calibration
 
 ---
 
 ## Dataset
 
-We use open-source datasets from Kaggle: []().
-
-The dataset contains 10,000 sample points with 14 distinct features such as
+We use open-source datasets from Kaggle: [heart.csv](https://www.kaggle.com/datasets/arezaei81/heartcsv).
 
 ---
 
@@ -157,9 +147,9 @@ I would like to extend my gratitude to all the individuals and organizations who
 
 Specifically, I would like to acknowledge:
 
-- The folks who host the []().
+- Guidance from [Probability Calibration: Data Science Concepts](https://www.youtube.com/watch?v=AunotauS5yI).
 
-- Guidance from [](https://github.com/ritvikmath/YouTubeVideoCode/blob/main/Probability%20Calibration.ipynb).
+- Data from [heart.csv](https://www.kaggle.com/datasets/arezaei81/heartcsv).
 
 - [Hema Kalyan Murapaka](https://www.linkedin.com/in/hemakalyan) and [Benito Martin](https://martindatasol.com/blog) for sharing their README.md templates upon which I have derived my README.md.
 
